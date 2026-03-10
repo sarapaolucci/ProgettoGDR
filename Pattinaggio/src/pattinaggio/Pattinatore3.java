@@ -8,10 +8,11 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class FileManager {
+public class Pattinatore3 extends Personaggio{
     
-    public void scriviRAF(){
-        String filePath = "pattinatori.dat";
+    
+    public Pattinatore3(String n, double pO, int p, String s){
+        super(n,pO,p,s);
     }
     
 }
