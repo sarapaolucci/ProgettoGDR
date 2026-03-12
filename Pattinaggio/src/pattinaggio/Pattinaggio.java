@@ -4,6 +4,8 @@
  */
 package pattinaggio;
 
+import java.io.IOException;
+
 /**
  *
  * @author paolucci.sara
@@ -13,8 +15,10 @@ public class Pattinaggio {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws IOException {
+        FileManager f = new FileManager();
+        f.scriviRAF();
+        System.out.println(f.leggiRAF());
     }
     
 }
