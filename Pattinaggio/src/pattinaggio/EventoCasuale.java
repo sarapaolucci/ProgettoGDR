@@ -8,11 +8,10 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class AlysaLiu extends Pattinatore{
+public class EventoCasuale {
     
-    
-    public AlysaLiu(String n, double pO, int p, String s){
-        super(n,pO,p,s);
+    public static void scontroDiretto(Pattinatore personaggio, Pattinatore avversario){
+        
     }
     
 }

@@ -8,13 +8,13 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public abstract class Personaggio {
+public abstract class Pattinatore {
    
     protected String nome, stato;
     protected int  posizione, scontriVinti, scontriPersi,punti, puntiPenalita;
     protected double puntiOlimpiade;
     
-    public Personaggio(String n, double pO, int p, String s){
+    public Pattinatore(String n, double pO, int p, String s){
         this.nome = n;
         this.posizione = p;
         this.puntiOlimpiade = pO;

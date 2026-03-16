@@ -8,7 +8,7 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class KaoriSakamoto extends Personaggio{
+public class KaoriSakamoto extends Pattinatore{
     private int podioOlimpiadi;
     
     public KaoriSakamoto(String n, double pO, int p, String s){

@@ -8,7 +8,7 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class AlexandraTrusova extends Personaggio{
+public class AlexandraTrusova extends Pattinatore{
     private boolean quad;
     private boolean cantilever;
     

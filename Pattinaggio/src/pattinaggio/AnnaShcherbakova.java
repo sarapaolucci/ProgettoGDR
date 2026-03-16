@@ -8,7 +8,7 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class AnnaShcherbakova extends Personaggio{
+public class AnnaShcherbakova extends Pattinatore{
     private boolean raccomandata;
     
     public AnnaShcherbakova(String n, double pO, int p, String s){
