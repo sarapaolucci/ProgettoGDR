@@ -8,11 +8,16 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class Pattinatore3 extends Personaggio{
+public class AnnaShcherbakova extends Personaggio{
+    private boolean raccomandata;
     
-    
-    public Pattinatore3(String n, double pO, int p, String s){
+    public AnnaShcherbakova(String n, double pO, int p, String s){
         super(n,pO,p,s);
+        this.raccomandata = true;
+    }
+    
+    public void setRaccomandata(boolean r){
+        this.raccomandata = r;
     }
     
 }

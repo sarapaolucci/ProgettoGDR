@@ -8,16 +8,12 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class Pattinatore2 extends Personaggio{
-    private boolean raccomandata;
+public class KaoriSakamoto extends Personaggio{
+    private int podioOlimpiadi;
     
-    public Pattinatore2(String n, double pO, int p, String s){
+    public KaoriSakamoto(String n, double pO, int p, String s){
         super(n,pO,p,s);
-        this.raccomandata = true;
-    }
-    
-    public void setRaccomandata(boolean r){
-        this.raccomandata = r;
+        this.podioOlimpiadi = 2;
     }
     
 }

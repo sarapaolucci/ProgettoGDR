@@ -8,11 +8,11 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class Pattinatore1 extends Personaggio{
+public class AlexandraTrusova extends Personaggio{
     private boolean quad;
     private boolean cantilever;
     
-    public Pattinatore1(String n, double pO, int p, String s){
+    public AlexandraTrusova(String n, double pO, int p, String s){
         super(n,pO,p,s);
         this.cantilever = true;
         this.quad = true;

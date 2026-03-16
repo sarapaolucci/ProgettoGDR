@@ -17,8 +17,10 @@ public class Pattinaggio {
      */
     public static void main(String[] args) throws IOException {
         FileManager f = new FileManager();
+        String filePathPechino = "pechino.dat";
+        String filePathCortina = "cortina.dat";
         f.scriviRAF();
-        System.out.println(f.leggiRAF());
+        System.out.println(f.leggiRAF(28 + 38, filePathCortina));
     }
     
 }

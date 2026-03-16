@@ -8,12 +8,11 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class Pattinatore4 extends Personaggio{
-    private int podioOlimpiadi;
+public class AlysaLiu extends Personaggio{
     
-    public Pattinatore4(String n, double pO, int p, String s){
+    
+    public AlysaLiu(String n, double pO, int p, String s){
         super(n,pO,p,s);
-        this.podioOlimpiadi = 2;
     }
     
 }

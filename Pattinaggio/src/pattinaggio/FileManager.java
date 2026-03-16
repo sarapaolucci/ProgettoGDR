@@ -16,8 +16,9 @@ public class FileManager {
     
     //Scrittura su file ad accesso diretto
     public void scriviRAF() throws FileNotFoundException, IOException{
-        String filePath = "pechino.dat";
-        try (RandomAccessFile raf = new RandomAccessFile(filePath,"rw")){
+        String filePathPechino = "pechino.dat";
+        String filePathCortina = "cortina.dat";
+        try (RandomAccessFile raf = new RandomAccessFile(filePathPechino,"rw")){
             raf.writeUTF("Anna Shcherbakova");
             raf.writeDouble(255.95);
             raf.writeInt(1);
@@ -33,13 +34,31 @@ public class FileManager {
             raf.writeInt(3);
             raf.writeUTF("Giappone");
         }
+        try (RandomAccessFile raf = new RandomAccessFile(filePathCortina,"rw")){
+            raf.writeUTF("Alysa Liu");
+            raf.writeDouble(226.79);
+            raf.writeInt(1);
+            raf.writeUTF("USA");
+            
+            raf.writeUTF("Kaori Sakamoto");
+            raf.writeDouble(224.90);
+            raf.writeInt(2);
+            raf.writeUTF("Giappone");
+            
+            raf.writeUTF("Amo Nakai");
+            raf.writeDouble(219.16);
+            raf.writeInt(3);
+            raf.writeUTF("Giappone");
+        }
     }
     
     //Lettura file ad accesso diretto
-    public String leggiRAF() throws FileNotFoundException, IOException{
-        String filePath = "pechino.dat";
+    //primo posto n = 0
+    //secondo posto pechino n = 39, cortina n = 28
+    //terzo posto pechino n = 39+39, cortina 28+38
+    public static String leggiRAF(int n, String filePath) throws FileNotFoundException, IOException{String filePathPechino = "pechino.dat";
         try (RandomAccessFile raf = new RandomAccessFile(filePath,"r")){
-            raf.seek(raf.getFilePointer());
+            raf.seek(raf.getFilePointer() + n);
             String name = raf.readUTF();
             double punti = raf.readDouble();
             int podio = raf.readInt();
