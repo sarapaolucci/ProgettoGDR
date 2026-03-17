@@ -8,10 +8,9 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class AlysaLiu extends Pattinatore{
+public class PattinatoreSenzaAbilita extends Pattinatore{
     
-    
-    public AlysaLiu(String n, double pO, int p, String s){
+    public PattinatoreSenzaAbilita(String n, double pO, int p, String s){
         super(n,pO,p,s);
     }
     

@@ -4,53 +4,80 @@
  */
 package pattinaggio;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  *
  * @author paolucci.sara
  */
 public class Gestore {
-    Pattinatore p;
-    String filePathPechino = "pechino.dat";
-    String filePathCortina = "cortina.dat";
-    int turno;
+    private Pattinatore p;
+    private String filePath;
+    private int indiceFile;
+    private int turno;
+    private Random rand;
     
-    public Gestore(int n, String filePath) throws IOException{
-        this.p = sceltaPersonaggio(n,filePath);
+    public Gestore(){
         this.turno = 0;
+        this.rand = new Random();
     }
     
-    public Pattinatore sceltaPersonaggio(int n, String filePath) throws IOException{
+    public void assegnaPersonaggio(int n, String f) throws IOException{
+        this.indiceFile = n;
+        this.filePath = f;
+        sceltaPersonaggio(indiceFile, filePath);
+    }
+    
+    public Pattinatore sceltaPersonaggio(int indiceFile,String filePath) throws IOException{
         Pattinatore pp;
-        String personaggio = FileManager.leggiRAF(n, filePath);
+        String personaggio = FileManager.leggiRAF(indiceFile, filePath);
         String dati[] = personaggio.split(" ");
-        if(filePath.equals(filePathPechino)){
-            switch (n) {
+        if(filePath.equals("pechino.dat")){
+            switch (indiceFile) {
                 case 0:
-                    pp = new AnnaShcherbakova(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
+                    pp = new PattinatoreRecord(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
                     break;
                 case 39:
-                    pp = new AlexandraTrusova(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
+                    pp = new PattinatoreFigureSkating(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
                     break;
                 default:
-                    pp = new KaoriSakamoto(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
+                    pp = new PattinatorePluripremiato(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
                     break;
             }
         }
         else{
-            if(n == 0){
-                pp = new AlysaLiu(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
-            }
-            else{
-                pp = new KaoriSakamoto(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
+            switch (indiceFile) {
+                case 0:
+                    pp = new PattinatoreSenzaAbilita(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
+                    break;
+                case 28:
+                    pp = new PattinatorePluripremiato(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
+                    break;
+                default:
+                    pp = new PattinatoreSenzaAbilita(dati[0],Double.parseDouble(dati[1]),Integer.parseInt(dati[2]),dati[3]);
+                    break;
             }
         }
         return pp;
     }
-    
-    public void scontroDiretto(){
-        //va nell'altra olimpiade e te ne prende uno a caso
-        EventoCasuale.scontroDiretto(p, p);
+    //primo posto n = 0
+    //secondo posto pechino n = 39, cortina n = 28
+    //terzo posto pechino n = 39+39, cortina 28+38
+    public void scontroDiretto() throws IOException{
+        Pattinatore avversario;
+        int i = rand.nextInt(5);
+        String file;
+        if(filePath.equals("cortina.dat")){
+            file = filePath;
+            int[] indici = {0,28,66};
+            avversario = sceltaPersonaggio(indici[i],file);
+        }
+        else{
+            file = "pechino.dat";
+            int[] indici = {0,39,78};
+            avversario = sceltaPersonaggio(indici[i],file);
+        }
+        EventoCasuale.scontroDiretto(p, avversario);
     }
     
 }

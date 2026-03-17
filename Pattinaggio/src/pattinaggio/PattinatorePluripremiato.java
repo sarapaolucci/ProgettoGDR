@@ -8,10 +8,10 @@ package pattinaggio;
  *
  * @author paolucci.sara
  */
-public class KaoriSakamoto extends Pattinatore{
+public class PattinatorePluripremiato extends Pattinatore{
     private int podioOlimpiadi;
     
-    public KaoriSakamoto(String n, double pO, int p, String s){
+    public PattinatorePluripremiato(String n, double pO, int p, String s){
         super(n,pO,p,s);
         this.podioOlimpiadi = 2;
     }
