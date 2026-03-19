@@ -31,67 +31,95 @@ public class Form1 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnIstruzioni = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        btnRiprendi = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 500));
+        setPreferredSize(new java.awt.Dimension(500, 400));
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(194, 222, 222));
 
-        jLabel1.setFont(new java.awt.Font("Siemens Serif SC Semi", 3, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
+        jLabel1.setFont(new java.awt.Font("Serif", 3, 50)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 204));
         jLabel1.setText("Pattinaggio");
 
-        jButton1.setFont(new java.awt.Font("Siemens Serif SC Semi", 1, 20)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(153, 204, 255));
+        jButton1.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 204));
         jButton1.setText("Inizia");
 
-        jButton2.setFont(new java.awt.Font("Siemens Serif SC Semi", 1, 20)); // NOI18N
-        jButton2.setText("Classifica");
+        btnIstruzioni.setBackground(new java.awt.Color(153, 204, 255));
+        btnIstruzioni.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        btnIstruzioni.setForeground(new java.awt.Color(0, 51, 204));
+        btnIstruzioni.setText("Istruzioni");
 
-        jLabel2.setFont(new java.awt.Font("Siemens Serif SC Semi", 1, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel2.setText("Nickname");
 
-        jTextField1.setFont(new java.awt.Font("Siemens Serif SC Semi", 1, 20)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        btnRiprendi.setBackground(new java.awt.Color(153, 204, 255));
+        btnRiprendi.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        btnRiprendi.setForeground(new java.awt.Color(0, 51, 204));
+        btnRiprendi.setText("Riprendi");
+
+        jSeparator1.setForeground(new java.awt.Color(51, 102, 255));
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jButton3.setBackground(new java.awt.Color(153, 204, 255));
+        jButton3.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 51, 204));
+        jButton3.setText("Classifica");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(73, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRiprendi)
+                    .addComponent(btnIstruzioni, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jButton1))
-                            .addComponent(jButton2))))
-                .addContainerGap(112, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(68, 68, 68))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
-                .addComponent(jButton2)
-                .addGap(64, 64, 64)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnIstruzioni)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnRiprendi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,11 +162,14 @@ public class Form1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIstruzioni;
+    private javax.swing.JButton btnRiprendi;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
