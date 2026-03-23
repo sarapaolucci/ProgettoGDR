@@ -4,6 +4,8 @@
  */
 package pattinaggio;
 
+import java.util.Random;
+
 /**
  *
  * @author paolucci.sara
@@ -13,6 +15,9 @@ public abstract class Pattinatore {
     protected String nome, stato;
     protected int  posizione, scontriVinti, scontriPersi,punti, puntiPenalita;
     protected double puntiOlimpiade;
+    protected Random rand;
+    //valutazioni
+    //protected int skatingSkills, transitions, performance, composition, interpretationOfMusic
     
     public Pattinatore(String n, double pO, int p, String s){
         this.nome = n;
@@ -49,8 +54,8 @@ public abstract class Pattinatore {
         return this.puntiPenalita;
     }
     
-    //public abstract void abilitaSpeciale();
+    public abstract void abilitaSpeciale();
     
-    
+    public abstract void rischio();
     
 }

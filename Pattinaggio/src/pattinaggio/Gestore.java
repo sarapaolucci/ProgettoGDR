@@ -80,4 +80,12 @@ public class Gestore {
         EventoCasuale.scontroDiretto(p, avversario);
     }
     
+    public void Gioca(){
+        int p;
+        int r = rand.nextInt(4);
+        if(r==0){
+            System.out.println("Axel");
+        }
+    }
+    
 }

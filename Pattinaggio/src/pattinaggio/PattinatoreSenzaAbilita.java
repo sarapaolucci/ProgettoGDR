@@ -14,4 +14,19 @@ public class PattinatoreSenzaAbilita extends Pattinatore{
         super(n,pO,p,s);
     }
     
+    @Override
+    public void abilitaSpeciale(){
+        System.out.println("Non hai abilità speciali!!!");
+    }
+    
+    @Override
+    public void rischio(){
+        int r = rand.nextInt(101);
+        if(r > 50){
+            puntiPenalita+=20;
+        }
+        else{
+            punti+=10;
+        }
+    }
 }

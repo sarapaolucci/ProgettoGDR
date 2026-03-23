@@ -16,4 +16,21 @@ public class PattinatorePluripremiato extends Pattinatore{
         this.podioOlimpiadi = 2;
     }
     
+    @Override
+    public void abilitaSpeciale(){
+        if(podioOlimpiadi>1){
+            punti+=15;
+        }
+    }
+    
+    @Override
+    public void rischio(){
+        int r = rand.nextInt(101);
+        if(r > 50){
+            puntiPenalita+=10;
+        }
+        else{
+            punti+=15;
+        }
+    }
 }

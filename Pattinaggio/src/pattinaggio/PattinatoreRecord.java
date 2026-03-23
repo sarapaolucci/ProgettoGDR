@@ -10,14 +10,34 @@ package pattinaggio;
  */
 public class PattinatoreRecord extends Pattinatore{
     private boolean raccomandata;
+    private boolean record;
     
     public PattinatoreRecord(String n, double pO, int p, String s){
         super(n,pO,p,s);
         this.raccomandata = true;
+        this.record =true;
     }
     
     public void setRaccomandata(boolean r){
         this.raccomandata = r;
     }
     
+    @Override
+    public void abilitaSpeciale(){
+        if(raccomandata ==true){
+            punti+=20;
+        }
+    }
+    
+    @Override
+    public void rischio(){
+        int r = rand.nextInt(101);
+        if(r > 80){
+            raccomandata = false;
+            puntiPenalita+=15;
+        }
+        else{
+            punti+=10;
+        }
+    }
 }
