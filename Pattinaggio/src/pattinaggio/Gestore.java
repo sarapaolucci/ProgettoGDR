@@ -81,11 +81,27 @@ public class Gestore {
     }
     
     public void Gioca(){
-        int p;
+        int pnt;
         int r = rand.nextInt(4);
         if(r==0){
             System.out.println("Axel");
+            pnt = EventoCasuale.Axel();
         }
+        else if(r==1){
+            System.out.println("Flip");
+            pnt = EventoCasuale.Flip();
+        }
+        else if(r==2){
+            System.out.println("Lutz");
+            pnt = EventoCasuale.Lutz();
+        }
+        else{
+            String quadruplo = EventoCasuale.Quadrupli();
+            String colonne[] = quadruplo.split(",");
+            System.out.println(colonne[1]);
+            pnt = Integer.parseInt(colonne[0]);
+        }
+        p.aumentaPunti(pnt);
     }
     
 }
