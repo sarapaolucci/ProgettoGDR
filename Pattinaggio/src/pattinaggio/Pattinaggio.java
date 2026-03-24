@@ -25,8 +25,8 @@ public class Pattinaggio {
         //Form1 ff = new Form1();
         //ff.setVisible(true);
         
-        //FormPersonaggio fff = new FormPersonaggio();
-        //fff.setVisible(true);
+        FormPersonaggio fff = new FormPersonaggio();
+        fff.setVisible(true);
     }
     
 }
