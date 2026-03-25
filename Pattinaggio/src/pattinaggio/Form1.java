@@ -4,6 +4,8 @@
  */
 package pattinaggio;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author paolucci.sara
@@ -56,6 +58,11 @@ public class Form1 extends javax.swing.JFrame {
         btnIstruzioni.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
         btnIstruzioni.setForeground(new java.awt.Color(0, 51, 204));
         btnIstruzioni.setText("Istruzioni");
+        btnIstruzioni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIstruzioniActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel2.setText("Nickname");
@@ -135,6 +142,10 @@ public class Form1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIstruzioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIstruzioniActionPerformed
+        JOptionPane.showMessageDialog(null,"Per prima cosa devi inserire il nickname, successivamente scegli un personaggio e  una canzone \n L'obiettivo del gioco è");
+    }//GEN-LAST:event_btnIstruzioniActionPerformed
 
     /**
      * @param args the command line arguments

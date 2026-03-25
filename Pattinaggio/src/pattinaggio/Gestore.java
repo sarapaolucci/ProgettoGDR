@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class Gestore {
     private Pattinatore p;
-    private String filePath;
+    private String filePath, musica, nickname;
     private int indiceFile;
     private int turno;
     private Random rand;
