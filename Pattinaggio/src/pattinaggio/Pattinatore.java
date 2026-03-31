@@ -17,7 +17,7 @@ public abstract class Pattinatore {
     protected double puntiOlimpiade;
     protected Random rand;
     //valutazioni
-    //protected int skatingSkills, transitions, performance, composition, interpretationOfMusic
+    protected int skatingSkills, transitions, performance, composition, interpretationOfMusic;
     
     public Pattinatore(String n, double pO, int p, String s){
         this.nome = n;
@@ -28,6 +28,26 @@ public abstract class Pattinatore {
         this.scontriPersi = 0;
         this.punti = 0;
         this.puntiPenalita = 0;
+    }
+    
+    public void setSkatingSkills(int i){
+        this.skatingSkills = i;
+    }
+    
+    public void setInterpretationOfMusic(int i){
+        this.interpretationOfMusic = i;
+    }
+    
+    public void setComposition(int i){
+        this.composition = i;
+    }
+    
+    public void setTransitions(int i){
+        this.transitions = i;
+    }
+    
+    public void setPerformance(int i){
+        this.performance = i;
     }
     
     public void aumentaPunti(int p){

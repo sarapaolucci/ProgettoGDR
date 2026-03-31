@@ -22,6 +22,18 @@ public class Gestore {
         this.rand = new Random();
     }
     
+    public void setMusica(String m){
+        this.musica = m;
+    }
+    
+    public void setTurno(int t){
+        this.turno = t;
+    }
+    
+    public int getTurno(){
+        return this.turno;
+    }
+    
     public void assegnaPersonaggio(int n, String f) throws IOException{
         this.indiceFile = n;
         this.filePath = f;
@@ -102,6 +114,10 @@ public class Gestore {
             pnt = Integer.parseInt(colonne[0]);
         }
         p.aumentaPunti(pnt);
+    }
+    
+    public void valutazioni(){
+        
     }
     
 }
