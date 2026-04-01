@@ -4,7 +4,9 @@
  */
 package pattinaggio;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -66,5 +68,16 @@ public class FileManager {
             return name + " " + punti + " " + podio + " " + stato;
         }
     }
+    /*
+    public Pattinatore leggiTxt(String filePath) throws FileNotFoundException, IOException{
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
+            String line;
+            while((line = reader.readLine())!= null){
+                String colonne[]= line.split(",");
+                Personaggio p;
+                
+            }
+        }
+    }*/
     
 }
