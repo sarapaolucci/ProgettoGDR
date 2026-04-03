@@ -22,11 +22,11 @@ public class Pattinaggio {
         f.scriviRAF();
         System.out.println(f.leggiRAF(28 + 38, filePathCortina));
         
-        Form1 ff = new Form1();
-        ff.setVisible(true);
+        //Form1 ff = new Form1();
+        //ff.setVisible(true);
         
-        //FormPersonaggio fff = new FormPersonaggio();
-        //fff.setVisible(true);
+        FormMusica fff = new FormMusica();
+        fff.setVisible(true);
     }
     
 }
