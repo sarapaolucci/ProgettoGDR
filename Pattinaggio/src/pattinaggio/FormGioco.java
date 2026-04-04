@@ -24,6 +24,7 @@ public class FormGioco extends javax.swing.JFrame {
         this.nome = nome;
         this.musica = musica;
         this.g = new Gestore();
+        
     }
 
     /**

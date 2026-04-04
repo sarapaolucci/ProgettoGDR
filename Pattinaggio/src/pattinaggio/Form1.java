@@ -19,6 +19,9 @@ public class Form1 extends javax.swing.JFrame {
      */
     public Form1() {
         initComponents();
+        
+        btnInizia.setEnabled(false);
+        btnRiprendi.setEnabled(false);
     }
 
     /**
@@ -35,7 +38,7 @@ public class Form1 extends javax.swing.JFrame {
         btnInizia = new javax.swing.JButton();
         btnIstruzioni = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNick = new javax.swing.JTextField();
         btnRiprendi = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jButton3 = new javax.swing.JButton();
@@ -72,8 +75,13 @@ public class Form1 extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel2.setText("Nickname");
 
-        jTextField1.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNick.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        txtNick.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNickActionPerformed(evt);
+            }
+        });
 
         btnRiprendi.setBackground(new java.awt.Color(153, 204, 255));
         btnRiprendi.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
@@ -103,7 +111,7 @@ public class Form1 extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNick, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnInizia))
                 .addGap(68, 68, 68))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -121,7 +129,7 @@ public class Form1 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnInizia))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,6 +166,11 @@ public class Form1 extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnIniziaActionPerformed
 
+    private void txtNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNickActionPerformed
+        btnInizia.setEnabled(true);
+        
+    }//GEN-LAST:event_txtNickActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -169,6 +182,6 @@ public class Form1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtNick;
     // End of variables declaration//GEN-END:variables
 }

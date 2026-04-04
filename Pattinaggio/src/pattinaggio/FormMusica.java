@@ -4,6 +4,10 @@
  */
 package pattinaggio;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 /**
  *
  * @author paolucci.sara
@@ -11,6 +15,7 @@ package pattinaggio;
 public class FormMusica extends javax.swing.JFrame {
     private String musica;
     private Pattinatore nome;
+    private Clip clip;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormMusica.class.getName());
 
     /**
@@ -37,11 +42,11 @@ public class FormMusica extends javax.swing.JFrame {
         btnLoveGame = new javax.swing.JButton();
         btnPrayForMe = new javax.swing.JButton();
         btnEBYT = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnPlaySkyfall = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnPlayLoveGame = new javax.swing.JButton();
+        btnPlayPrayForMe = new javax.swing.JButton();
+        btnEveryBreathYouTake = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,13 +85,33 @@ public class FormMusica extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barrra.jpg"))); // NOI18N
+        btnPlaySkyfall.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barrra.jpg"))); // NOI18N
+        btnPlaySkyfall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlaySkyfallActionPerformed(evt);
+            }
+        });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barrra.jpg"))); // NOI18N
+        btnPlayLoveGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barrra.jpg"))); // NOI18N
+        btnPlayLoveGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayLoveGameActionPerformed(evt);
+            }
+        });
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barrra.jpg"))); // NOI18N
+        btnPlayPrayForMe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barrra.jpg"))); // NOI18N
+        btnPlayPrayForMe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlayPrayForMeActionPerformed(evt);
+            }
+        });
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barrra.jpg"))); // NOI18N
+        btnEveryBreathYouTake.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/barrra.jpg"))); // NOI18N
+        btnEveryBreathYouTake.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEveryBreathYouTakeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,23 +124,23 @@ public class FormMusica extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnPlaySkyfall, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnSkyfall, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLoveGame, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPlayLoveGame, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnPlayPrayForMe, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnPrayForMe, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(39, 39, 39)
                         .addComponent(btnEBYT, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEveryBreathYouTake, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
@@ -132,16 +157,16 @@ public class FormMusica extends javax.swing.JFrame {
                             .addComponent(btnEBYT, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnPlayLoveGame, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPlayPrayForMe, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEveryBreathYouTake, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(73, 73, 73))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSkyfall, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPlaySkyfall, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -164,6 +189,9 @@ public class FormMusica extends javax.swing.JFrame {
         FormGioco f = new FormGioco(nome,musica);
         f.setVisible(true);
         this.setVisible(false);
+        if (clip != null && clip.isRunning()) {
+            interrompiWav();
+        }
     }//GEN-LAST:event_btnSkyfallActionPerformed
 
     private void btnLoveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoveGameActionPerformed
@@ -171,6 +199,9 @@ public class FormMusica extends javax.swing.JFrame {
         FormGioco f = new FormGioco(nome,musica);
         f.setVisible(true);
         this.setVisible(false);
+        if (clip != null && clip.isRunning()) {
+            interrompiWav();
+        }
     }//GEN-LAST:event_btnLoveGameActionPerformed
 
     private void btnPrayForMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrayForMeActionPerformed
@@ -178,6 +209,9 @@ public class FormMusica extends javax.swing.JFrame {
         FormGioco f = new FormGioco(nome,musica);
         f.setVisible(true);
         this.setVisible(false);
+        if (clip != null && clip.isRunning()) {
+            interrompiWav();
+        }
     }//GEN-LAST:event_btnPrayForMeActionPerformed
 
     private void btnEBYTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEBYTActionPerformed
@@ -185,19 +219,76 @@ public class FormMusica extends javax.swing.JFrame {
         FormGioco f = new FormGioco(nome,musica);
         f.setVisible(true);
         this.setVisible(false);
+        if (clip != null && clip.isRunning()) {
+            interrompiWav();
+        }
     }//GEN-LAST:event_btnEBYTActionPerformed
 
+    private void btnPlaySkyfallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaySkyfallActionPerformed
+        if (clip != null && clip.isRunning()) {
+            interrompiWav();
+        }
+        else {
+            riproduciWav("skyfall.wav");
+        }
+    }//GEN-LAST:event_btnPlaySkyfallActionPerformed
+
+    private void btnPlayLoveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayLoveGameActionPerformed
+        if (clip != null && clip.isRunning()) {
+            interrompiWav();
+        }
+        else {
+            riproduciWav("lovegame.wav");
+        }
+    }//GEN-LAST:event_btnPlayLoveGameActionPerformed
+
+    private void btnPlayPrayForMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayPrayForMeActionPerformed
+        if (clip != null && clip.isRunning()) {
+            interrompiWav();
+        }
+        else {
+            riproduciWav("prayforme.wav");
+        }
+    }//GEN-LAST:event_btnPlayPrayForMeActionPerformed
+
+    private void btnEveryBreathYouTakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEveryBreathYouTakeActionPerformed
+        if (clip != null && clip.isRunning()) {
+            interrompiWav();
+        }
+        else {
+            riproduciWav("everybreathyoutake.wav");
+        }
+    }//GEN-LAST:event_btnEveryBreathYouTakeActionPerformed
+    
+    public void riproduciWav(String nomeFile) {
+        try {
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(getClass().getResource("/suoni/" + nomeFile));
+            this.clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        }
+
+
+        public void interrompiWav() {
+            if (this.clip != null && this.clip.isRunning()) {
+               clip.stop();             
+               clip.setFramePosition(0); 
+            }
+        }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEBYT;
+    private javax.swing.JButton btnEveryBreathYouTake;
     private javax.swing.JButton btnLoveGame;
+    private javax.swing.JButton btnPlayLoveGame;
+    private javax.swing.JButton btnPlayPrayForMe;
+    private javax.swing.JButton btnPlaySkyfall;
     private javax.swing.JButton btnPrayForMe;
     private javax.swing.JButton btnSkyfall;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
