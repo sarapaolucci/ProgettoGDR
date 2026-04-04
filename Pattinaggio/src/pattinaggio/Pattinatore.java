@@ -74,8 +74,8 @@ public abstract class Pattinatore {
         return this.puntiPenalita;
     }
     
-    public abstract void abilitaSpeciale();
+    public abstract String abilitaSpeciale();
     
-    public abstract void rischio();
+    public abstract String rischio();
     
 }

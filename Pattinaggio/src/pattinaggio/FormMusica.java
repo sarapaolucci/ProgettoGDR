@@ -13,7 +13,7 @@ import javax.sound.sampled.Clip;
  * @author paolucci.sara
  */
 public class FormMusica extends javax.swing.JFrame {
-    private String musica;
+    private String musica,nickname;
     private Pattinatore nome;
     private Clip clip;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormMusica.class.getName());
@@ -22,9 +22,10 @@ public class FormMusica extends javax.swing.JFrame {
      * Creates new form FormMusica
      * @param nome
      */
-    public FormMusica(Pattinatore nome) {
+    public FormMusica(Pattinatore nome,String nickname) {
         initComponents();
         this.nome = nome;
+        this.nickname=nickname;
     }
 
     /**
@@ -186,7 +187,7 @@ public class FormMusica extends javax.swing.JFrame {
 
     private void btnSkyfallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkyfallActionPerformed
         musica = "skyfall";
-        FormGioco f = new FormGioco(nome,musica);
+        FormGioco f = new FormGioco(nome,musica,nickname);
         f.setVisible(true);
         this.setVisible(false);
         if (clip != null && clip.isRunning()) {
@@ -196,7 +197,7 @@ public class FormMusica extends javax.swing.JFrame {
 
     private void btnLoveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoveGameActionPerformed
         musica = "loveGame";
-        FormGioco f = new FormGioco(nome,musica);
+        FormGioco f = new FormGioco(nome,musica,nickname);
         f.setVisible(true);
         this.setVisible(false);
         if (clip != null && clip.isRunning()) {
@@ -206,7 +207,7 @@ public class FormMusica extends javax.swing.JFrame {
 
     private void btnPrayForMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrayForMeActionPerformed
         musica = "prayForMe";
-        FormGioco f = new FormGioco(nome,musica);
+        FormGioco f = new FormGioco(nome,musica,nickname);
         f.setVisible(true);
         this.setVisible(false);
         if (clip != null && clip.isRunning()) {
@@ -216,7 +217,7 @@ public class FormMusica extends javax.swing.JFrame {
 
     private void btnEBYTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEBYTActionPerformed
         musica = "everyBreathYouTake";
-        FormGioco f = new FormGioco(nome,musica);
+        FormGioco f = new FormGioco(nome,musica,nickname);
         f.setVisible(true);
         this.setVisible(false);
         if (clip != null && clip.isRunning()) {

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author paolucci.sara
  */
 public class Form1 extends javax.swing.JFrame {
-    
+    private String nickname;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Form1.class.getName());
 
     /**
@@ -161,14 +161,14 @@ public class Form1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIstruzioniActionPerformed
 
     private void btnIniziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniziaActionPerformed
-        FormPersonaggio f = new FormPersonaggio();
+        FormPersonaggio f = new FormPersonaggio(nickname);
         f.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnIniziaActionPerformed
 
     private void txtNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNickActionPerformed
         btnInizia.setEnabled(true);
-        
+        nickname = txtNick.getText();
     }//GEN-LAST:event_txtNickActionPerformed
 
     

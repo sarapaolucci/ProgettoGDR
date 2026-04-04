@@ -27,33 +27,37 @@ public class PattinatoreFigureSkating extends Pattinatore{
     }
     
     @Override
-    public void abilitaSpeciale(){
-        if(cantilever==true){
-            if(quad==true){
-                punti+=20;
-            }
-            else{
-                punti+=10;
-            }
+    public String abilitaSpeciale(){
+        if(cantilever==true && quad == true){
+            punti += 30;
+            return "";
         }
-        if(quad==true){
-            punti+=10;
+        else if(quad==true){
+            punti+=15;
+            return "";
+        }
+        else{
+            punti += 15;
+            return "";
         }
     }
     
     @Override
-    public void rischio(){
+    public String rischio(){
        int r = rand.nextInt(101);
        if(r > 70){
            quad=false;
            puntiPenalita+=10;
+           return "";
        }
        else if(r > 90){
            cantilever=false;
            puntiPenalita+=15;
+           return "";
        }
        else{
            punti+=30;
+           return "";
        }
     }
 }

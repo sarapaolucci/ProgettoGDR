@@ -10,13 +10,16 @@ package pattinaggio;
  */
 public class FormPersonaggio extends javax.swing.JFrame {
     private Pattinatore nome;
+    private String nickname;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormPersonaggio.class.getName());
 
     /**
      * Creates new form FormPersonaggio
+     * @param n
      */
-    public FormPersonaggio() {
+    public FormPersonaggio(String n) {
         initComponents();
+        this.nickname = n;
     }
 
     /**
@@ -165,28 +168,28 @@ public class FormPersonaggio extends javax.swing.JFrame {
 
     private void btnLiuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiuActionPerformed
         nome = new PattinatoreSenzaAbilita("Alysa Liu", 226.79, 1, "USA");
-        FormMusica f = new FormMusica(nome);
+        FormMusica f = new FormMusica(nome,nickname);
         f.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnLiuActionPerformed
 
     private void btnTrusovaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrusovaActionPerformed
         nome = new PattinatoreFigureSkating("Alexandra Trusova", 251.73, 2, "Russia");
-        FormMusica f = new FormMusica(nome);
+        FormMusica f = new FormMusica(nome,nickname);
         f.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnTrusovaActionPerformed
 
     private void btnAnnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnaActionPerformed
         nome = new PattinatoreRecord("Anna Shcherbakova", 255.95, 1, "Russia");
-        FormMusica f = new FormMusica(nome);
+        FormMusica f = new FormMusica(nome,nickname);
         f.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnAnnaActionPerformed
 
     private void btnKaoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKaoriActionPerformed
         nome = new PattinatorePluripremiato("Kaori Sakamoto", 233.13, 3, "Giappone");
-        FormMusica f = new FormMusica(nome);
+        FormMusica f = new FormMusica(nome,nickname);
         f.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnKaoriActionPerformed

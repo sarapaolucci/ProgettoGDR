@@ -23,21 +23,25 @@ public class PattinatoreRecord extends Pattinatore{
     }
     
     @Override
-    public void abilitaSpeciale(){
+    public String abilitaSpeciale(){
         if(raccomandata ==true){
             punti+=20;
+            return "";
         }
+        return "";
     }
     
     @Override
-    public void rischio(){
+    public String rischio(){
         int r = rand.nextInt(101);
         if(r > 80){
             raccomandata = false;
             puntiPenalita+=15;
+            return "";
         }
         else{
             punti+=10;
+            return "";
         }
     }
 }

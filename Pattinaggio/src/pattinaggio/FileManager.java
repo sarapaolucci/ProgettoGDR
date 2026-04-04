@@ -5,10 +5,13 @@
 package pattinaggio;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,12 +19,22 @@ import java.io.RandomAccessFile;
  */
 public class FileManager {
     
-    public void scriviClassifica(){
-        
+    public static ArrayList<String> leggiClassifica(String filePath) throws IOException{
+        ArrayList<String> righe = new ArrayList();
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
+            String line;
+            while ((line = reader.readLine()) != null){
+                righe.add(line);
+            }
+        }
+        return righe;
     }
     
-    public void leggiClassifica(){
-        
+    public static void scriviClassifica(String filePath, Gestore g) throws IOException{
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
+            writer.write(g.getNickname() + " " + g.getPersonaggio() + " " + g.getPersonaggio().punti);
+            writer.newLine();
+        }
     }
     
     /*

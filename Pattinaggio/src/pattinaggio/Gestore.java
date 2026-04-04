@@ -12,22 +12,26 @@ import java.util.Random;
  */
 public class Gestore {
     private Pattinatore p;
-    private String filePath, musica, nickname;
-    private int indiceFile;
+    private String  musica, nickname;
+    //private String filePath;
+    //private int indiceFile;
     private int turno;
     private Random rand;
     
-    public Gestore(){
+    public Gestore(Pattinatore p, String m, String nickname){
         this.turno = 0;
         this.rand = new Random();
-    }
-    
-    public void setNickname(String m){
-        this.nickname = m;
-    }
-    
-    public void setMusica(String m){
         this.musica = m;
+        this.p = p;
+        this.nickname = nickname;
+    }
+    
+    public Pattinatore getPersonaggio(){
+        return this.p;
+    }
+    
+    public String getNickname(){
+        return this.nickname;
     }
     
     public void setTurno(int t){
@@ -37,6 +41,57 @@ public class Gestore {
     public int getTurno(){
         return this.turno;
     }
+    
+    public void Gioca(){
+        int pnt;
+        int r = rand.nextInt(4);
+        if(r==0){
+            System.out.println("Axel");
+            pnt = EventoCasuale.Axel();
+        }
+        else if(r==1){
+            System.out.println("Flip");
+            pnt = EventoCasuale.Flip();
+        }
+        else if(r==2){
+            System.out.println("Lutz");
+            pnt = EventoCasuale.Lutz();
+        }
+        else{
+            String quadruplo = EventoCasuale.Quadrupli();
+            String colonne[] = quadruplo.split(",");
+            System.out.println(colonne[1]);
+            pnt = Integer.parseInt(colonne[0]);
+        }
+        p.aumentaPunti(pnt);
+    }
+    
+    public void valutazioni(){
+        
+    }
+    
+    public String rischio(){
+        return p.rischio();
+    }
+    
+    public String abilitaSpeciale(){
+        return p.abilitaSpeciale();
+    }
+    
+    public void scontroDiretto(Pattinatore personaggio, Pattinatore avversario){
+        int punti = 0;
+        if(personaggio.puntiOlimpiade > avversario.puntiOlimpiade){
+            punti += 10;
+        }
+        else{
+            punti -=3;
+        }
+        if(personaggio.posizione > avversario.posizione){
+            punti +=5;
+        }
+        personaggio.aumentaPunti(punti);
+    }
+    
     /*
     public void assegnaPersonaggio(int n, String f) throws IOException{
         this.indiceFile = n;
@@ -97,32 +152,6 @@ public class Gestore {
         EventoCasuale.scontroDiretto(p, avversario);
     }
     */
-    public void Gioca(){
-        int pnt;
-        int r = rand.nextInt(4);
-        if(r==0){
-            System.out.println("Axel");
-            pnt = EventoCasuale.Axel();
-        }
-        else if(r==1){
-            System.out.println("Flip");
-            pnt = EventoCasuale.Flip();
-        }
-        else if(r==2){
-            System.out.println("Lutz");
-            pnt = EventoCasuale.Lutz();
-        }
-        else{
-            String quadruplo = EventoCasuale.Quadrupli();
-            String colonne[] = quadruplo.split(",");
-            System.out.println(colonne[1]);
-            pnt = Integer.parseInt(colonne[0]);
-        }
-        p.aumentaPunti(pnt);
-    }
     
-    public void valutazioni(){
-        
-    }
     
 }

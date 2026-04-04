@@ -12,19 +12,7 @@ import java.util.Random;
  */
 public class EventoCasuale {
     
-    public static void scontroDiretto(Pattinatore personaggio, Pattinatore avversario){
-        int punti = 0;
-        if(personaggio.puntiOlimpiade > avversario.puntiOlimpiade){
-            punti += 10;
-        }
-        else{
-            punti -=3;
-        }
-        if(personaggio.posizione > avversario.posizione){
-            punti +=5;
-        }
-        personaggio.aumentaPunti(punti);
-    }
+    
     
     public static int Axel(){
         Random rand = new Random();
