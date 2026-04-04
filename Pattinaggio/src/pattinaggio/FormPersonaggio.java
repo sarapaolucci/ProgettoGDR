@@ -9,7 +9,7 @@ package pattinaggio;
  * @author paolucci.sara
  */
 public class FormPersonaggio extends javax.swing.JFrame {
-    
+    private Pattinatore nome;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormPersonaggio.class.getName());
 
     /**
@@ -30,10 +30,10 @@ public class FormPersonaggio extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnTrusova = new javax.swing.JButton();
+        btnKaori = new javax.swing.JButton();
+        btnLiu = new javax.swing.JButton();
+        btnAnna = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -48,19 +48,34 @@ public class FormPersonaggio extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 102, 204));
         jLabel1.setText("Scelta Personaggio");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trusova_1.jpg"))); // NOI18N
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/kaori.jpg"))); // NOI18N
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/liu.jpg"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnTrusova.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trusova_1.jpg"))); // NOI18N
+        btnTrusova.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTrusova.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnTrusovaActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anna.jpg"))); // NOI18N
+        btnKaori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/kaori.jpg"))); // NOI18N
+        btnKaori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKaoriActionPerformed(evt);
+            }
+        });
+
+        btnLiu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/liu.jpg"))); // NOI18N
+        btnLiu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLiuActionPerformed(evt);
+            }
+        });
+
+        btnAnna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anna.jpg"))); // NOI18N
+        btnAnna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnnaActionPerformed(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Serif", 1, 17)); // NOI18N
@@ -94,16 +109,16 @@ public class FormPersonaggio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTrusova, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAnna, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnKaori, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnLiu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -119,12 +134,12 @@ public class FormPersonaggio extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLiu, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnTrusova, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAnna, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnKaori, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -148,40 +163,41 @@ public class FormPersonaggio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnLiuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiuActionPerformed
+        nome = new PattinatoreSenzaAbilita("Alysa Liu", 226.79, 1, "USA");
+        FormMusica f = new FormMusica(nome);
+        f.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnLiuActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnTrusovaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrusovaActionPerformed
+        nome = new PattinatoreFigureSkating("Alexandra Trusova", 251.73, 2, "Russia");
+        FormMusica f = new FormMusica(nome);
+        f.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnTrusovaActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FormPersonaggio().setVisible(true));
-    }
+    private void btnAnnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnnaActionPerformed
+        nome = new PattinatoreRecord("Anna Shcherbakova", 255.95, 1, "Russia");
+        FormMusica f = new FormMusica(nome);
+        f.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAnnaActionPerformed
+
+    private void btnKaoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKaoriActionPerformed
+        nome = new PattinatorePluripremiato("Kaori Sakamoto", 233.13, 3, "Giappone");
+        FormMusica f = new FormMusica(nome);
+        f.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnKaoriActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAnna;
+    private javax.swing.JButton btnKaori;
+    private javax.swing.JButton btnLiu;
+    private javax.swing.JButton btnTrusova;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

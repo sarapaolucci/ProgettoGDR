@@ -16,6 +16,15 @@ import java.io.RandomAccessFile;
  */
 public class FileManager {
     
+    public void scriviClassifica(){
+        
+    }
+    
+    public void leggiClassifica(){
+        
+    }
+    
+    /*
     //Scrittura su file ad accesso diretto
     public void scriviRAF() throws FileNotFoundException, IOException{
         String filePathPechino = "pechino.dat";
@@ -68,16 +77,7 @@ public class FileManager {
             return name + " " + punti + " " + podio + " " + stato;
         }
     }
-    /*
-    public Pattinatore leggiTxt(String filePath) throws FileNotFoundException, IOException{
-        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
-            String line;
-            while((line = reader.readLine())!= null){
-                String colonne[]= line.split(",");
-                Personaggio p;
-                
-            }
-        }
-    }*/
+    
+    */
     
 }

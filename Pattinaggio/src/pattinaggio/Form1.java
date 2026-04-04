@@ -32,7 +32,7 @@ public class Form1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnInizia = new javax.swing.JButton();
         btnIstruzioni = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -49,10 +49,15 @@ public class Form1 extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 102, 204));
         jLabel1.setText("Pattinaggio");
 
-        jButton1.setBackground(new java.awt.Color(153, 204, 255));
-        jButton1.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 51, 204));
-        jButton1.setText("Inizia");
+        btnInizia.setBackground(new java.awt.Color(153, 204, 255));
+        btnInizia.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        btnInizia.setForeground(new java.awt.Color(0, 51, 204));
+        btnInizia.setText("Inizia");
+        btnInizia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniziaActionPerformed(evt);
+            }
+        });
 
         btnIstruzioni.setBackground(new java.awt.Color(153, 204, 255));
         btnIstruzioni.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
@@ -99,7 +104,7 @@ public class Form1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnInizia))
                 .addGap(68, 68, 68))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(121, 121, 121)
@@ -118,7 +123,7 @@ public class Form1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                        .addComponent(btnInizia))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnIstruzioni)
@@ -147,35 +152,18 @@ public class Form1 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Per prima cosa devi inserire il nickname, successivamente scegli un personaggio\n e  una canzone. L'obiettivo del gioco è superare il record, quindi il primo della classifica. \nQuando inizi il tuo pattinatore inizia la sua performance e ad ogni turno in base \nalle mosse che riesce a fare, perderà o acquisirà punti.");
     }//GEN-LAST:event_btnIstruzioniActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnIniziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniziaActionPerformed
+        FormPersonaggio f = new FormPersonaggio();
+        f.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnIniziaActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Form1().setVisible(true));
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInizia;
     private javax.swing.JButton btnIstruzioni;
     private javax.swing.JButton btnRiprendi;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

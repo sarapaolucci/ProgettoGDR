@@ -22,6 +22,10 @@ public class Gestore {
         this.rand = new Random();
     }
     
+    public void setNickname(String m){
+        this.nickname = m;
+    }
+    
     public void setMusica(String m){
         this.musica = m;
     }
@@ -33,7 +37,7 @@ public class Gestore {
     public int getTurno(){
         return this.turno;
     }
-    
+    /*
     public void assegnaPersonaggio(int n, String f) throws IOException{
         this.indiceFile = n;
         this.filePath = f;
@@ -72,6 +76,7 @@ public class Gestore {
         }
         return pp;
     }
+
     //primo posto n = 0
     //secondo posto pechino n = 39, cortina n = 28
     //terzo posto pechino n = 39+39, cortina 28+38
@@ -91,7 +96,7 @@ public class Gestore {
         }
         EventoCasuale.scontroDiretto(p, avversario);
     }
-    
+    */
     public void Gioca(){
         int pnt;
         int r = rand.nextInt(4);

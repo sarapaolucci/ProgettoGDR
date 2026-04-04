@@ -15,18 +15,10 @@ public class Pattinaggio {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
-        FileManager f = new FileManager();
-        String filePathPechino = "pechino.dat";
-        String filePathCortina = "cortina.dat";
-        f.scriviRAF();
-        System.out.println(f.leggiRAF(28 + 38, filePathCortina));
+    public static void main(String[] args) {
         
-        //Form1 ff = new Form1();
-        //ff.setVisible(true);
-        
-        FormMusica fff = new FormMusica();
-        fff.setVisible(true);
+        Form1 form = new Form1();
+        form.setVisible(true);
     }
     
 }
