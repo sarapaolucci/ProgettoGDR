@@ -31,6 +31,10 @@ public class Gestore implements Serializable{
         return this.p;
     }
     
+    public String getMusica(){
+        return this.musica;
+    }
+    
     public String getNickname(){
         return this.nickname;
     }

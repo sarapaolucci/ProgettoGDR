@@ -48,7 +48,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="btnRiprendi" min="-2" max="-2" attributes="0"/>
                       <Component id="btnIstruzioni" min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="btnClassifica" min="-2" pref="122" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="17" max="-2" attributes="0"/>
@@ -85,7 +85,7 @@
                       <Group type="102" attributes="0">
                           <Component id="btnIstruzioni" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnClassifica" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="btnRiprendi" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
@@ -182,7 +182,7 @@
             <Property name="orientation" type="int" value="1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnClassifica">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="99" type="rgb"/>
@@ -195,6 +195,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Classifica"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClassificaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

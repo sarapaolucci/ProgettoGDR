@@ -4,6 +4,7 @@
  */
 package pattinaggio;
 
+import java.io.IOException;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -187,8 +188,14 @@ public class FormMusica extends javax.swing.JFrame {
 
     private void btnSkyfallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkyfallActionPerformed
         musica = "skyfall";
-        FormGioco f = new FormGioco(nome,musica,nickname);
-        f.setVisible(true);
+        FormGioco f;
+        try {
+            f = new FormGioco(nome,musica,nickname);
+            f.setVisible(true);
+        } catch (IOException ex) {
+            System.getLogger(FormMusica.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        
         this.setVisible(false);
         if (clip != null && clip.isRunning()) {
             interrompiWav();
@@ -197,8 +204,14 @@ public class FormMusica extends javax.swing.JFrame {
 
     private void btnLoveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoveGameActionPerformed
         musica = "loveGame";
-        FormGioco f = new FormGioco(nome,musica,nickname);
-        f.setVisible(true);
+        FormGioco f;
+        try {
+            f = new FormGioco(nome,musica,nickname);
+            f.setVisible(true);
+        } catch (IOException ex) {
+            System.getLogger(FormMusica.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        
         this.setVisible(false);
         if (clip != null && clip.isRunning()) {
             interrompiWav();
@@ -207,8 +220,13 @@ public class FormMusica extends javax.swing.JFrame {
 
     private void btnPrayForMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrayForMeActionPerformed
         musica = "prayForMe";
-        FormGioco f = new FormGioco(nome,musica,nickname);
-        f.setVisible(true);
+        FormGioco f;
+        try {
+            f = new FormGioco(nome,musica,nickname);
+            f.setVisible(true);
+        } catch (IOException ex) {
+            System.getLogger(FormMusica.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
         this.setVisible(false);
         if (clip != null && clip.isRunning()) {
             interrompiWav();
@@ -217,8 +235,14 @@ public class FormMusica extends javax.swing.JFrame {
 
     private void btnEBYTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEBYTActionPerformed
         musica = "everyBreathYouTake";
-        FormGioco f = new FormGioco(nome,musica,nickname);
-        f.setVisible(true);
+        FormGioco f;
+        try {
+            f = new FormGioco(nome,musica,nickname);
+            f.setVisible(true);
+        } catch (IOException ex) {
+            System.getLogger(FormMusica.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        
         this.setVisible(false);
         if (clip != null && clip.isRunning()) {
             interrompiWav();

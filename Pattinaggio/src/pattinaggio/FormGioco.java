@@ -5,6 +5,7 @@
 package pattinaggio;
 
 import java.io.IOException;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.io.IOException;
  */
 public class FormGioco extends javax.swing.JFrame {
     private Pattinatore nome;
-    private String musica,nickname;
+    private String musica,nickname,record;
     private Gestore g;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormGioco.class.getName());
 
@@ -22,7 +23,7 @@ public class FormGioco extends javax.swing.JFrame {
      * @param musica
      * @param nickname
      */
-    public FormGioco(Pattinatore nome, String musica,String nickname) {
+    public FormGioco(Pattinatore nome, String musica,String nickname) throws IOException {
         initComponents();
         this.nome = nome;
         this.musica = musica;
@@ -33,6 +34,31 @@ public class FormGioco extends javax.swing.JFrame {
         txtArea.setText("Benvenuto\n\n");
         btnAbSpeciale.setEnabled(false);
         btnValutazioni.setEnabled(false);
+        record = FileManager.leggiRecord();
+        if(record == null){
+            record = ""+0;
+        }
+        lblRecord.setText("Record: " + record);
+        String percorso = Immagine();
+        ImageIcon icon = new ImageIcon(getClass().getResource(percorso));
+        lblPersonaggio.setIcon(icon);
+        
+    }
+    
+    public String Immagine(){
+        if(g.getPersonaggio().getNome().equals("Alexandra Trusova")){
+            return "/img/trusova_icon.jpg";
+        }
+        else if(g.getPersonaggio().getNome().equals("Anna Shcherbakova")){
+            return "/img/anna_icon.jpg";
+        }
+        else if(g.getPersonaggio().getNome().equals("Kaori Sakamoto")){
+            return "/img/kaori_icon.jpg";
+        }
+        else{
+            return "/img/liu_icon.jpg";
+        }
+        
     }
 
     /**
@@ -58,7 +84,7 @@ public class FormGioco extends javax.swing.JFrame {
         txtArea = new javax.swing.JTextArea();
         btnScontroDiretto = new javax.swing.JButton();
         btnValutazioni = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblRecord = new javax.swing.JLabel();
         lblPersonaggio = new javax.swing.JLabel();
         lblEvento = new javax.swing.JLabel();
 
@@ -142,10 +168,10 @@ public class FormGioco extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Record");
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblRecord.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        lblRecord.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRecord.setText("Record");
+        lblRecord.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         lblPersonaggio.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -165,7 +191,7 @@ public class FormGioco extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .addComponent(lblRecord, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                             .addComponent(lblTurno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(50, 50, 50))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -214,7 +240,7 @@ public class FormGioco extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)))))
+                                .addComponent(lblRecord)))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -238,13 +264,7 @@ public class FormGioco extends javax.swing.JFrame {
         String evento = g.Avanti();
         txtArea.append(evento+"\n");
         lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
-        if(g.getTurno()==10){
-            btnAvanti.setEnabled(false);
-            btnRischio.setEnabled(false);
-            btnAbSpeciale.setEnabled(false);
-            btnScontroDiretto.setEnabled(false);
-            btnValutazioni.setEnabled(true);
-        }
+        controllo();
     }//GEN-LAST:event_btnAvantiActionPerformed
 
     private void btnScontroDirettoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScontroDirettoActionPerformed
@@ -258,13 +278,7 @@ public class FormGioco extends javax.swing.JFrame {
         } catch (IOException ex) {
             System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
-        if(g.getTurno()==10){
-            btnAvanti.setEnabled(false);
-            btnRischio.setEnabled(false);
-            btnAbSpeciale.setEnabled(false);
-            btnScontroDiretto.setEnabled(false);
-            btnValutazioni.setEnabled(true);
-        }
+        controllo();
     }//GEN-LAST:event_btnScontroDirettoActionPerformed
 
     private void btnRischioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRischioActionPerformed
@@ -274,13 +288,7 @@ public class FormGioco extends javax.swing.JFrame {
         String rischio = g.rischio();
         txtArea.append(rischio+"\n");
         lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
-        if(g.getTurno()==10){
-            btnAvanti.setEnabled(false);
-            btnRischio.setEnabled(false);
-            btnAbSpeciale.setEnabled(false);
-            btnScontroDiretto.setEnabled(false);
-            btnValutazioni.setEnabled(true);
-        }
+        controllo();
     }//GEN-LAST:event_btnRischioActionPerformed
 
     private void btnAbSpecialeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbSpecialeActionPerformed
@@ -290,13 +298,7 @@ public class FormGioco extends javax.swing.JFrame {
         txtArea.append(AbSpeciale+"\n");
         lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
         btnAbSpeciale.setEnabled(false);
-        if(g.getTurno()==10){
-            btnAvanti.setEnabled(false);
-            btnRischio.setEnabled(false);
-            btnAbSpeciale.setEnabled(false);
-            btnScontroDiretto.setEnabled(false);
-            btnValutazioni.setEnabled(true);
-        }
+        controllo();
     }//GEN-LAST:event_btnAbSpecialeActionPerformed
 
     private void btnValutazioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValutazioniActionPerformed
@@ -326,10 +328,30 @@ public class FormGioco extends javax.swing.JFrame {
             txtArea.append(valutazione);
             lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
             btnValutazioni.setEnabled(false);
+            try {
+                FileManager.scriviClassifica(g);
+            } catch (IOException ex) {
+                System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+            if(g.getPersonaggio().punti > Integer.parseInt(record)){
+                try {
+                    FileManager.scriviRecord(g.getPersonaggio().punti);
+                } catch (IOException ex) {
+                    System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                }
+            }
         }
     }//GEN-LAST:event_btnValutazioniActionPerformed
 
-   
+   public void controllo(){
+       if(g.getTurno()==10){
+            btnAvanti.setEnabled(false);
+            btnRischio.setEnabled(false);
+            btnAbSpeciale.setEnabled(false);
+            btnScontroDiretto.setEnabled(false);
+            btnValutazioni.setEnabled(true);
+        }
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbSpeciale;
@@ -338,7 +360,6 @@ public class FormGioco extends javax.swing.JFrame {
     private javax.swing.JButton btnRischio;
     private javax.swing.JButton btnScontroDiretto;
     private javax.swing.JButton btnValutazioni;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -347,6 +368,7 @@ public class FormGioco extends javax.swing.JFrame {
     private javax.swing.JLabel lblNickname;
     private javax.swing.JLabel lblPersonaggio;
     private javax.swing.JLabel lblPunti;
+    private javax.swing.JLabel lblRecord;
     private javax.swing.JLabel lblTurno;
     private javax.swing.JTextArea txtArea;
     // End of variables declaration//GEN-END:variables

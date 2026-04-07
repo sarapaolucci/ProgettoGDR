@@ -24,7 +24,8 @@ import java.util.Random;
  */
 public class FileManager {
     
-    public static ArrayList<String> leggiClassifica(String filePath) throws IOException{
+    public static ArrayList<String> leggiClassifica() throws IOException{
+        String filePath = "classifica.txt";
         ArrayList<String> righe = new ArrayList();
         try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
             String line;
@@ -35,9 +36,24 @@ public class FileManager {
         return righe;
     }
     
-    public static void scriviClassifica(String filePath, Gestore g) throws IOException{
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
-            writer.write(g.getNickname() + " " + g.getPersonaggio() + " " + g.getPersonaggio().punti);
+    public static String leggiRecord() throws FileNotFoundException, IOException{
+        String filePath = "record.txt";
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
+            String line = reader.readLine();
+            return line;
+        }
+    }
+    
+    public static void scriviRecord(int i) throws IOException{
+        String filePath = "record.txt";
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath,true))){
+            writer.write(""+i);
+        }
+    }
+    
+    public static void scriviClassifica(Gestore g) throws IOException{
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("classifica.txt",true))){
+            writer.append(g.getNickname() + " - " + g.getPersonaggio().nome +" - " + g.getPersonaggio().punti);
             writer.newLine();
         }
     }

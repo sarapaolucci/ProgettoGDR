@@ -4,7 +4,16 @@
  */
 package pattinaggio;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -41,10 +50,9 @@ public class Form1 extends javax.swing.JFrame {
         txtNick = new javax.swing.JTextField();
         btnRiprendi = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton3 = new javax.swing.JButton();
+        btnClassifica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 400));
 
         jPanel1.setBackground(new java.awt.Color(194, 222, 222));
 
@@ -91,10 +99,15 @@ public class Form1 extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(51, 102, 255));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jButton3.setBackground(new java.awt.Color(153, 204, 255));
-        jButton3.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 51, 204));
-        jButton3.setText("Classifica");
+        btnClassifica.setBackground(new java.awt.Color(153, 204, 255));
+        btnClassifica.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        btnClassifica.setForeground(new java.awt.Color(0, 51, 204));
+        btnClassifica.setText("Classifica");
+        btnClassifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClassificaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,7 +118,7 @@ public class Form1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnRiprendi)
                     .addComponent(btnIstruzioni, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClassifica, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
@@ -136,7 +149,7 @@ public class Form1 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnIstruzioni)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnClassifica)
                         .addGap(12, 12, 12)
                         .addComponent(btnRiprendi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(47, Short.MAX_VALUE))
@@ -157,7 +170,11 @@ public class Form1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIstruzioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIstruzioniActionPerformed
-        JOptionPane.showMessageDialog(null,"Per prima cosa devi inserire il nickname, successivamente scegli un personaggio\n e  una canzone. L'obiettivo del gioco è superare il record, quindi il primo della classifica. \nQuando inizi il tuo pattinatore inizia la sua performance e ad ogni turno in base alle mosse \nche riesce a fare, perderà o acquisirà punti. Per usare la propria abilità speciale devi \nprima rischiare. Sia lo scontro diretto che l'abilità speciale si possono usare una sola volta.\nI turni sono 10. Infine ci sono le 5 valutazioni. Durante il corso della partita, c'è la possibilità \ndi salvare la propria performance e continuare successivamente.");
+        Color azzurroChiaro = new Color(195, 221, 221);
+        Color blu = new Color(242,242,242);
+        UIManager.put("OptionPane.background", azzurroChiaro);
+        UIManager.put("Panel.background", azzurroChiaro);
+        JOptionPane.showMessageDialog(null,"Per prima cosa devi inserire il nickname, successivamente scegli un personaggio\n e  una canzone. L'obiettivo del gioco è superare il record, quindi il primo della classifica. \nQuando inizi il tuo pattinatore inizia la sua performance e ad ogni turno in base alle mosse \nche riesce a fare, perderà o acquisirà punti. Per usare la propria abilità speciale devi \nprima rischiare. Sia lo scontro diretto che l'abilità speciale si possono usare una sola volta.\nI turni sono 10. Infine ci sono le 5 valutazioni. Durante il corso della partita, c'è la possibilità \ndi salvare la propria performance e continuare successivamente.","Istruzioni Gioco",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnIstruzioniActionPerformed
 
     private void btnIniziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniziaActionPerformed
@@ -171,13 +188,23 @@ public class Form1 extends javax.swing.JFrame {
         nickname = txtNick.getText();
     }//GEN-LAST:event_txtNickActionPerformed
 
+    private void btnClassificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificaActionPerformed
+        this.setVisible(false);
+        try {
+            FormClassifica f = new FormClassifica();
+            f.setVisible(true);
+        } catch (IOException ex) {
+            System.getLogger(Form1.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+    }//GEN-LAST:event_btnClassificaActionPerformed
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClassifica;
     private javax.swing.JButton btnInizia;
     private javax.swing.JButton btnIstruzioni;
     private javax.swing.JButton btnRiprendi;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
