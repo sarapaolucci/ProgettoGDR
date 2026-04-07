@@ -36,18 +36,16 @@ public class FileManager {
         return righe;
     }
     
-    public static String leggiRecord() throws FileNotFoundException, IOException{
-        String filePath = "record.txt";
+    public static String leggiRecord(String filePath) throws FileNotFoundException, IOException{
         try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
             String line = reader.readLine();
             return line;
         }
     }
     
-    public static void scriviRecord(int i) throws IOException{
-        String filePath = "record.txt";
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath,true))){
-            writer.write(""+i);
+    public static void scriviRecord(String i, String filePath) throws IOException{
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
+            writer.write(i);
         }
     }
     

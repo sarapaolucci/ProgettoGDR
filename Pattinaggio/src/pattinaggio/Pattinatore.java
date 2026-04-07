@@ -4,14 +4,16 @@
  */
 package pattinaggio;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author paolucci.sara
  */
-public abstract class Pattinatore {
-   
+public abstract class Pattinatore implements Serializable {
+   private static final long serialVersionUID = 1L;
+    
     protected String nome, stato;
     protected int posizione,punti;
     protected double puntiOlimpiade;

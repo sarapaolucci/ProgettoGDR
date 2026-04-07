@@ -12,6 +12,8 @@ import java.util.Random;
  * @author paolucci.sara
  */
 public class Gestore implements Serializable{
+    private static final long serialVersionUID = 1L;
+    
     private Pattinatore p, avversario;
     private String  musica, nickname;
     //private String filePath;
@@ -25,6 +27,10 @@ public class Gestore implements Serializable{
         this.musica = m;
         this.p = p;
         this.nickname = nickname;
+    }
+    
+    public Pattinatore getAvversario(){
+        return this.avversario;
     }
     
     public Pattinatore getPersonaggio(){

@@ -95,6 +95,11 @@ public class Form1 extends javax.swing.JFrame {
         btnRiprendi.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
         btnRiprendi.setForeground(new java.awt.Color(0, 51, 204));
         btnRiprendi.setText("Riprendi");
+        btnRiprendi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiprendiActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(51, 102, 255));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -186,6 +191,16 @@ public class Form1 extends javax.swing.JFrame {
     private void txtNickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNickActionPerformed
         btnInizia.setEnabled(true);
         nickname = txtNick.getText();
+        String nicknameVecchio;
+        try {
+            nicknameVecchio = FileManager.leggiRecord("nickname.txt");
+            if(nickname.equals(nicknameVecchio)){
+            btnRiprendi.setEnabled(true);
+        }
+        } catch (IOException ex) {
+            System.getLogger(Form1.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        
     }//GEN-LAST:event_txtNickActionPerformed
 
     private void btnClassificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClassificaActionPerformed
@@ -197,6 +212,20 @@ public class Form1 extends javax.swing.JFrame {
             System.getLogger(Form1.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }//GEN-LAST:event_btnClassificaActionPerformed
+
+    private void btnRiprendiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiprendiActionPerformed
+        try {
+            Gestore g = FileManager.deserializza();
+            this.setVisible(false);
+            FormGioco f = new FormGioco(g);
+            f.setVisible(true);
+        } catch (IOException ex) {
+            System.getLogger(Form1.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        } catch (ClassNotFoundException ex) {
+            System.getLogger(Form1.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        
+    }//GEN-LAST:event_btnRiprendiActionPerformed
     
     
 

@@ -34,7 +34,7 @@ public class FormGioco extends javax.swing.JFrame {
         txtArea.setText("Benvenuto\n\n");
         btnAbSpeciale.setEnabled(false);
         btnValutazioni.setEnabled(false);
-        record = FileManager.leggiRecord();
+        record = FileManager.leggiRecord("record.txt");
         if(record == null){
             record = ""+0;
         }
@@ -42,7 +42,32 @@ public class FormGioco extends javax.swing.JFrame {
         String percorso = Immagine();
         ImageIcon icon = new ImageIcon(getClass().getResource(percorso));
         lblPersonaggio.setIcon(icon);
+    }
+    
+    public FormGioco(Gestore g) throws IOException{
+        initComponents();
+        this.g = g;
+        lblNickname.setText(g.getNickname());
+        record = FileManager.leggiRecord("record.txt");
+        if(record == null){
+            record = ""+0;
+        }
+        lblRecord.setText("Record: " + record);
+        String percorso = Immagine();
+        ImageIcon icon = new ImageIcon(getClass().getResource(percorso));
+        lblPersonaggio.setIcon(icon);
+        lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
+        btnAbSpeciale.setEnabled(false);
+        btnValutazioni.setEnabled(false);
         
+        lblTurno.setText("Turno: "+g.getTurno());
+        controllo();
+        if(g.getValutazioni()==5){
+            btnValutazioni.setEnabled(false);
+        }
+        else if(g.getValutazioni() > 0){
+            btnValutazioni.setEnabled(true);
+        }
     }
     
     public String Immagine(){
@@ -78,7 +103,7 @@ public class FormGioco extends javax.swing.JFrame {
         btnAvanti = new javax.swing.JButton();
         btnRischio = new javax.swing.JButton();
         btnAbSpeciale = new javax.swing.JButton();
-        btnIstruzioni3 = new javax.swing.JButton();
+        btnSalva = new javax.swing.JButton();
         lblNickname = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
@@ -135,10 +160,15 @@ public class FormGioco extends javax.swing.JFrame {
             }
         });
 
-        btnIstruzioni3.setBackground(new java.awt.Color(153, 204, 255));
-        btnIstruzioni3.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
-        btnIstruzioni3.setForeground(new java.awt.Color(0, 51, 204));
-        btnIstruzioni3.setText("Salva partita");
+        btnSalva.setBackground(new java.awt.Color(153, 204, 255));
+        btnSalva.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        btnSalva.setForeground(new java.awt.Color(0, 51, 204));
+        btnSalva.setText("Salva partita");
+        btnSalva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvaActionPerformed(evt);
+            }
+        });
 
         lblNickname.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         lblNickname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -185,7 +215,7 @@ public class FormGioco extends javax.swing.JFrame {
                     .addComponent(lblNickname, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                     .addComponent(lblPunti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnValutazioni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnIstruzioni3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSalva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblPersonaggio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -232,7 +262,7 @@ public class FormGioco extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(lblPunti)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnIstruzioni3)
+                                .addComponent(btnSalva)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnValutazioni))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -259,6 +289,9 @@ public class FormGioco extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAvantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvantiActionPerformed
+        String a = "/img/avanti.jpg";
+        ImageIcon iconAvanti = new ImageIcon(getClass().getResource(a));
+        lblEvento.setIcon(iconAvanti);
         g.setTurno(g.getTurno()+1);
         lblTurno.setText("Turno "+ g.getTurno());
         String evento = g.Avanti();
@@ -272,6 +305,9 @@ public class FormGioco extends javax.swing.JFrame {
         lblTurno.setText("Turno "+ g.getTurno());
         try {
             String scontro = g.scontroDiretto();
+            String avversario = scontroDirettoImmagine(g.getAvversario());
+            ImageIcon iconevento = new ImageIcon(getClass().getResource(avversario));
+            lblEvento.setIcon(iconevento);
             txtArea.append(scontro+"\n");
             lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
             btnScontroDiretto.setEnabled(false);
@@ -282,6 +318,9 @@ public class FormGioco extends javax.swing.JFrame {
     }//GEN-LAST:event_btnScontroDirettoActionPerformed
 
     private void btnRischioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRischioActionPerformed
+        String a = "/img/rischio.jpg";
+        ImageIcon iconRischio = new ImageIcon(getClass().getResource(a));
+        lblEvento.setIcon(iconRischio);
         g.setTurno(g.getTurno()+1);
         lblTurno.setText("Turno "+ g.getTurno());
         btnAbSpeciale.setEnabled(true);
@@ -292,6 +331,9 @@ public class FormGioco extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRischioActionPerformed
 
     private void btnAbSpecialeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbSpecialeActionPerformed
+        String ab = "/img/abspec.jpg";
+        ImageIcon iconabspec = new ImageIcon(getClass().getResource(ab));
+        lblEvento.setIcon(iconabspec);
         g.setTurno(g.getTurno()+1);
         lblTurno.setText("Turno "+ g.getTurno());
         String AbSpeciale = g.abilitaSpeciale();
@@ -302,6 +344,9 @@ public class FormGioco extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbSpecialeActionPerformed
 
     private void btnValutazioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValutazioniActionPerformed
+        String a = "/img/avanti.jpg";
+        ImageIcon iconAvanti = new ImageIcon(getClass().getResource(a));
+        lblEvento.setIcon(iconAvanti);
         g.setValutazioni(g.getValutazioni()+1);
         if(g.getValutazioni()==1){
             String valutazione = g.skatingSkillsValutazione();
@@ -335,13 +380,29 @@ public class FormGioco extends javax.swing.JFrame {
             }
             if(g.getPersonaggio().punti > Integer.parseInt(record)){
                 try {
-                    FileManager.scriviRecord(g.getPersonaggio().punti);
+                    String punti = ""+g.getPersonaggio().punti;
+                    FileManager.scriviRecord(punti,"record.txt");
                 } catch (IOException ex) {
                     System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
                 }
             }
         }
     }//GEN-LAST:event_btnValutazioniActionPerformed
+
+    private void btnSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvaActionPerformed
+        try {
+            FileManager.scriviRecord(nickname, "nickname.txt");
+        } catch (IOException ex) {
+            System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        try {
+            FileManager.serializzazione(g);
+        } catch (IOException ex) {
+            System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        btnSalva.setEnabled(false);
+        this.dispose();
+    }//GEN-LAST:event_btnSalvaActionPerformed
 
    public void controllo(){
        if(g.getTurno()==10){
@@ -352,12 +413,30 @@ public class FormGioco extends javax.swing.JFrame {
             btnValutazioni.setEnabled(true);
         }
    }
+   
+   public String scontroDirettoImmagine(Pattinatore a){
+       if(a.getNome().equals("Alexandra Trusova")){
+            return "/img/trusova_icon.jpg";
+        }
+        else if(a.getNome().equals("Anna Shcherbakova")){
+            return "/img/anna_icon.jpg";
+        }
+        else if(a.getNome().equals("Kaori Sakamoto")){
+            return "/img/kaori_icon.jpg";
+        }
+        else if(a.getNome().equals("Ami Nakai")){
+            return "/img/ami_icon.jpg";
+        }
+        else{
+            return "/img/liu_icon.jpg";
+        }
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbSpeciale;
     private javax.swing.JButton btnAvanti;
-    private javax.swing.JButton btnIstruzioni3;
     private javax.swing.JButton btnRischio;
+    private javax.swing.JButton btnSalva;
     private javax.swing.JButton btnScontroDiretto;
     private javax.swing.JButton btnValutazioni;
     private javax.swing.JPanel jPanel1;
