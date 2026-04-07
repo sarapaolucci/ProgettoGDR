@@ -18,23 +18,21 @@ public class PattinatorePluripremiato extends Pattinatore{
     
     @Override
     public String abilitaSpeciale(){
-        if(podioOlimpiadi>1){
-            punti+=15;
-            return "";
-        }
-        return "";
+        punti+=15;
+        return "Grazie alle tue due medaglie \nolimpiche hai un bonus di 15 punti\n";
     }
     
     @Override
     public String rischio(){
         int r = rand.nextInt(101);
         if(r > 50){
-            puntiPenalita+=10;
-            return "";
+            punti-=10;
+            return "Stavi per cadere! \nHai una penalità di 10 punti\n";
         }
         else{
             punti+=15;
-            return "";
+            composition = 10;
+            return "Hai eseguito la tua figura perfettamente! \nHai un bonus di 15 punti. Se ne terrà \nconto nella valutazione composition\n";
         }
     }
 }

@@ -157,7 +157,7 @@ public class Form1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIstruzioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIstruzioniActionPerformed
-        JOptionPane.showMessageDialog(null,"Per prima cosa devi inserire il nickname, successivamente scegli un personaggio\n e  una canzone. L'obiettivo del gioco è superare il record, quindi il primo della classifica. \nQuando inizi il tuo pattinatore inizia la sua performance e ad ogni turno in base \nalle mosse che riesce a fare, perderà o acquisirà punti.");
+        JOptionPane.showMessageDialog(null,"Per prima cosa devi inserire il nickname, successivamente scegli un personaggio\n e  una canzone. L'obiettivo del gioco è superare il record, quindi il primo della classifica. \nQuando inizi il tuo pattinatore inizia la sua performance e ad ogni turno in base alle mosse \nche riesce a fare, perderà o acquisirà punti. Per usare la propria abilità speciale devi \nprima rischiare. Sia lo scontro diretto che l'abilità speciale si possono usare una sola volta.\nI turni sono 10. Infine ci sono le 5 valutazioni. Durante il corso della partita, c'è la possibilità \ndi salvare la propria performance e continuare successivamente.");
     }//GEN-LAST:event_btnIstruzioniActionPerformed
 
     private void btnIniziaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniziaActionPerformed

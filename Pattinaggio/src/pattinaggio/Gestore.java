@@ -4,18 +4,19 @@
  */
 package pattinaggio;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author paolucci.sara
  */
-public class Gestore {
-    private Pattinatore p;
+public class Gestore implements Serializable{
+    private Pattinatore p, avversario;
     private String  musica, nickname;
     //private String filePath;
     //private int indiceFile;
-    private int turno;
+    private int turno, valutazioni;
     private Random rand;
     
     public Gestore(Pattinatore p, String m, String nickname){
@@ -34,6 +35,14 @@ public class Gestore {
         return this.nickname;
     }
     
+    public int getValutazioni(){
+        return this.valutazioni;
+    }
+    
+    public void setValutazioni(int v){
+        this.valutazioni = v;
+    }
+    
     public void setTurno(int t){
         this.turno = t;
     }
@@ -42,32 +51,120 @@ public class Gestore {
         return this.turno;
     }
     
-    public void Gioca(){
-        int pnt;
+    public String Avanti(){
+        String evento = "";
         int r = rand.nextInt(4);
-        if(r==0){
-            System.out.println("Axel");
-            pnt = EventoCasuale.Axel();
+        if(r==0 && !p.nome.equals("Alysa Liu")){
+            evento = EventoCasuale.Quadrupli(p);
         }
         else if(r==1){
-            System.out.println("Flip");
-            pnt = EventoCasuale.Flip();
+            evento = EventoCasuale.Figura("flip",2,5,p);
         }
         else if(r==2){
-            System.out.println("Lutz");
-            pnt = EventoCasuale.Lutz();
+            evento = EventoCasuale.Figura("lutz",2,6,p);
         }
         else{
-            String quadruplo = EventoCasuale.Quadrupli();
-            String colonne[] = quadruplo.split(",");
-            System.out.println(colonne[1]);
-            pnt = Integer.parseInt(colonne[0]);
+            evento = EventoCasuale.Figura("axel",3,8,p);
         }
-        p.aumentaPunti(pnt);
+        return evento;
     }
     
-    public void valutazioni(){
-        
+    public String interpretationOfMusicValutazione(){
+        if(musica.equals("skyfall")){
+            this.p.interpretationOfMusic = 7;
+            if(p.nome.equals("Anna Shcherbakova")||p.nome.equals("Alexandra Trusova")){
+                this.p.interpretationOfMusic = 10;
+            }
+        }
+        else if(musica.equals("loveGame")){
+            this.p.interpretationOfMusic = 8;
+        }
+        else if(musica.equals("prayForMe")){
+            this.p.interpretationOfMusic = 9;
+            if(p.nome.equals("Alysa Liu")){
+                this.p.interpretationOfMusic = 7;
+            }
+        }
+        else{
+            this.p.interpretationOfMusic = 8;
+            if(p.nome.equals("Kaori Sakamoto")){
+                this.p.interpretationOfMusic = 10;
+            }
+        }
+        p.punti+= p.interpretationOfMusic;
+        return "Interpretation of the music: " + this.p.interpretationOfMusic +"\n";
+    }
+    //collegamenti figure
+    public String transitionsValutazione(){
+        if(p.transitions==0){
+            if(p.punti < 22){
+                p.transitions = 5;
+            }
+            else{
+                if(musica.equals("prayForMe")){
+                    p.transitions = 9;
+                }
+                p.transitions = 8;
+            }
+        }
+        p.punti+= p.transitions;
+        return "Transitions: " + p.transitions+"\n";
+    }
+    //presenza scenica
+    public String performanceValutazione(){
+        if(this.p.performance==0){
+            if(this.p.nome.equals("Alysa Liu")){
+                this.p.performance = 7;
+            }
+            else{
+                this.p.performance = 9;
+            }
+        }
+        p.punti+= p.performance;
+        return "Performance: "+ this.p.performance+"\n"; 
+    }
+    //programma
+    public String compositionValutazione(){
+        if(this.p.puntiOlimpiade > 230){
+            this.p.composition = 10;
+        }
+        else{
+            this.p.composition = 7;
+        }
+        p.punti+= p.composition;
+        return "Composition: " + this.p.composition+"\n";
+    }
+    
+    public String skatingSkillsValutazione(){
+        if(this.p.stato.equals("Russia")){
+            this.p.skatingSkills = 10;
+        }
+        else if(this.p.stato.equals("Giappone")){
+            this.p.skatingSkills = 9;
+        }
+        else{
+            this.p.skatingSkills = 8;
+        }
+        p.punti+= p.skatingSkills;
+        return "Skating skills: "+ this.p.skatingSkills+"\n";
+    }
+    
+    public Pattinatore scegliAvversario() throws IOException{
+        if(p.nome.equals("Alexandra Trusova")||p.nome.equals("Anna Shcherbakova")){
+            return FileManager.ScegliAvversario("MilanoCortina2026.txt");
+        }
+        else if(p.nome.equals("Kaori Sakamoto")){
+            Pattinatore a = FileManager.ScegliAvversario("MilanoCortina2026.txt");
+            if(a.nome.equals(p.nome)){
+               while(a.nome.equals(p.nome)){
+                   a =FileManager.ScegliAvversario("MilanoCortina2026.txt");
+               } 
+            }
+            return a;
+        }
+        else{
+            return FileManager.ScegliAvversario("Pechino2022.txt");
+        }
     }
     
     public String rischio(){
@@ -78,18 +175,24 @@ public class Gestore {
         return p.abilitaSpeciale();
     }
     
-    public void scontroDiretto(Pattinatore personaggio, Pattinatore avversario){
+    public String scontroDiretto() throws IOException{
+        avversario = scegliAvversario();
+        String output = "Lo scontro diretto è in base alle \nstatistiche dell'ultima olimpiade del \ntuo personaggio e dell'avversario \nche è "+ avversario.nome+"\n";
         int punti = 0;
-        if(personaggio.puntiOlimpiade > avversario.puntiOlimpiade){
+        if(p.puntiOlimpiade > avversario.puntiOlimpiade){
             punti += 10;
+            output += "+10 punti perchè il tuo punteggio \nera  maggiore\n";
         }
         else{
             punti -=3;
+            output += "-3 punti perchè il tuo punteggio \nera minore\n";
         }
-        if(personaggio.posizione > avversario.posizione){
+        if(p.posizione > avversario.posizione){
             punti +=5;
+            output += "+5 punti perchè sei più in alto \nnel podio\n";
         }
-        personaggio.aumentaPunti(punti);
+        p.aumentaPunti(punti);
+        return output;
     }
     
     /*

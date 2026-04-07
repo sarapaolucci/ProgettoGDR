@@ -4,6 +4,8 @@
  */
 package pattinaggio;
 
+import java.io.IOException;
+
 /**
  *
  * @author paolucci.sara
@@ -27,7 +29,10 @@ public class FormGioco extends javax.swing.JFrame {
         this.nickname = nickname;
         
         this.g = new Gestore(nome,musica,nickname);
-        
+        lblNickname.setText(g.getNickname());
+        txtArea.setText("Benvenuto\n\n");
+        btnAbSpeciale.setEnabled(false);
+        btnValutazioni.setEnabled(false);
     }
 
     /**
@@ -42,19 +47,20 @@ public class FormGioco extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        btnIstruzioni = new javax.swing.JButton();
-        btnIstruzioni1 = new javax.swing.JButton();
-        btnIstruzioni2 = new javax.swing.JButton();
+        lblTurno = new javax.swing.JLabel();
+        lblPunti = new javax.swing.JLabel();
+        btnAvanti = new javax.swing.JButton();
+        btnRischio = new javax.swing.JButton();
+        btnAbSpeciale = new javax.swing.JButton();
         btnIstruzioni3 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
+        lblNickname = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtArea = new javax.swing.JTextArea();
+        btnScontroDiretto = new javax.swing.JButton();
+        btnValutazioni = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lblPersonaggio = new javax.swing.JLabel();
+        lblEvento = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -64,50 +70,84 @@ public class FormGioco extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(195, 219, 219));
 
-        jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Turno");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblTurno.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        lblTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTurno.setText("Turno 0");
+        lblTurno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel3.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("Scontri Vinti");
+        lblPunti.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        lblPunti.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPunti.setText("Punti: 0");
 
-        jLabel4.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Scontri Persi");
+        btnAvanti.setBackground(new java.awt.Color(153, 204, 255));
+        btnAvanti.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        btnAvanti.setForeground(new java.awt.Color(0, 51, 204));
+        btnAvanti.setText("Avanti");
+        btnAvanti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvantiActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Punti");
+        btnRischio.setBackground(new java.awt.Color(153, 204, 255));
+        btnRischio.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        btnRischio.setForeground(new java.awt.Color(0, 51, 204));
+        btnRischio.setText("Rischio");
+        btnRischio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRischioActionPerformed(evt);
+            }
+        });
 
-        btnIstruzioni.setBackground(new java.awt.Color(153, 204, 255));
-        btnIstruzioni.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
-        btnIstruzioni.setForeground(new java.awt.Color(0, 51, 204));
-        btnIstruzioni.setText("Avanti");
-
-        btnIstruzioni1.setBackground(new java.awt.Color(153, 204, 255));
-        btnIstruzioni1.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
-        btnIstruzioni1.setForeground(new java.awt.Color(0, 51, 204));
-        btnIstruzioni1.setText("Rischio");
-
-        btnIstruzioni2.setBackground(new java.awt.Color(153, 204, 255));
-        btnIstruzioni2.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
-        btnIstruzioni2.setForeground(new java.awt.Color(0, 51, 204));
-        btnIstruzioni2.setText("Abilità Speciale");
+        btnAbSpeciale.setBackground(new java.awt.Color(153, 204, 255));
+        btnAbSpeciale.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        btnAbSpeciale.setForeground(new java.awt.Color(0, 51, 204));
+        btnAbSpeciale.setText("Abilità Speciale");
+        btnAbSpeciale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbSpecialeActionPerformed(evt);
+            }
+        });
 
         btnIstruzioni3.setBackground(new java.awt.Color(153, 204, 255));
         btnIstruzioni3.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
         btnIstruzioni3.setForeground(new java.awt.Color(0, 51, 204));
-        btnIstruzioni3.setText("Scontro Diretto");
+        btnIstruzioni3.setText("Salva partita");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        lblNickname.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        lblNickname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNickname.setText("Nickname");
 
-        jLabel6.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Punti");
+        txtArea.setColumns(20);
+        txtArea.setRows(5);
+        jScrollPane3.setViewportView(txtArea);
+
+        btnScontroDiretto.setBackground(new java.awt.Color(153, 204, 255));
+        btnScontroDiretto.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        btnScontroDiretto.setForeground(new java.awt.Color(0, 51, 204));
+        btnScontroDiretto.setText("Scontro Diretto");
+        btnScontroDiretto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnScontroDirettoActionPerformed(evt);
+            }
+        });
+
+        btnValutazioni.setBackground(new java.awt.Color(153, 204, 255));
+        btnValutazioni.setFont(new java.awt.Font("Serif", 1, 20)); // NOI18N
+        btnValutazioni.setForeground(new java.awt.Color(0, 51, 204));
+        btnValutazioni.setText("Valutazioni");
+        btnValutazioni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValutazioniActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Record");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        lblPersonaggio.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,27 +156,29 @@ public class FormGioco extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)))
+                    .addComponent(lblNickname, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(lblPunti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnValutazioni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnIstruzioni3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPersonaggio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIstruzioni, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .addComponent(lblTurno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnIstruzioni3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnIstruzioni2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnIstruzioni1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnAvanti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRischio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnScontroDiretto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAbSpeciale)
+                    .addComponent(lblEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,33 +186,36 @@ public class FormGioco extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnIstruzioni)
-                            .addComponent(jLabel1))
+                        .addComponent(btnAvanti)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnScontroDiretto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRischio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAbSpeciale))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblNickname)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblPersonaggio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblPunti)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnIstruzioni3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnIstruzioni1)
+                                .addComponent(btnValutazioni))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblTurno)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnIstruzioni2))
-                            .addComponent(jScrollPane2))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)))))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,24 +232,122 @@ public class FormGioco extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAvantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvantiActionPerformed
+        g.setTurno(g.getTurno()+1);
+        lblTurno.setText("Turno "+ g.getTurno());
+        String evento = g.Avanti();
+        txtArea.append(evento+"\n");
+        lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
+        if(g.getTurno()==10){
+            btnAvanti.setEnabled(false);
+            btnRischio.setEnabled(false);
+            btnAbSpeciale.setEnabled(false);
+            btnScontroDiretto.setEnabled(false);
+            btnValutazioni.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnAvantiActionPerformed
+
+    private void btnScontroDirettoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScontroDirettoActionPerformed
+        g.setTurno(g.getTurno()+1);
+        lblTurno.setText("Turno "+ g.getTurno());
+        try {
+            String scontro = g.scontroDiretto();
+            txtArea.append(scontro+"\n");
+            lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
+            btnScontroDiretto.setEnabled(false);
+        } catch (IOException ex) {
+            System.getLogger(FormGioco.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        if(g.getTurno()==10){
+            btnAvanti.setEnabled(false);
+            btnRischio.setEnabled(false);
+            btnAbSpeciale.setEnabled(false);
+            btnScontroDiretto.setEnabled(false);
+            btnValutazioni.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnScontroDirettoActionPerformed
+
+    private void btnRischioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRischioActionPerformed
+        g.setTurno(g.getTurno()+1);
+        lblTurno.setText("Turno "+ g.getTurno());
+        btnAbSpeciale.setEnabled(true);
+        String rischio = g.rischio();
+        txtArea.append(rischio+"\n");
+        lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
+        if(g.getTurno()==10){
+            btnAvanti.setEnabled(false);
+            btnRischio.setEnabled(false);
+            btnAbSpeciale.setEnabled(false);
+            btnScontroDiretto.setEnabled(false);
+            btnValutazioni.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnRischioActionPerformed
+
+    private void btnAbSpecialeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbSpecialeActionPerformed
+        g.setTurno(g.getTurno()+1);
+        lblTurno.setText("Turno "+ g.getTurno());
+        String AbSpeciale = g.abilitaSpeciale();
+        txtArea.append(AbSpeciale+"\n");
+        lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
+        btnAbSpeciale.setEnabled(false);
+        if(g.getTurno()==10){
+            btnAvanti.setEnabled(false);
+            btnRischio.setEnabled(false);
+            btnAbSpeciale.setEnabled(false);
+            btnScontroDiretto.setEnabled(false);
+            btnValutazioni.setEnabled(true);
+        }
+    }//GEN-LAST:event_btnAbSpecialeActionPerformed
+
+    private void btnValutazioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValutazioniActionPerformed
+        g.setValutazioni(g.getValutazioni()+1);
+        if(g.getValutazioni()==1){
+            String valutazione = g.skatingSkillsValutazione();
+            txtArea.append(valutazione);
+            lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
+        }
+        else if(g.getValutazioni()==2){
+            String valutazione = g.transitionsValutazione();
+            txtArea.append(valutazione);
+            lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
+        }
+        else if(g.getValutazioni()==3){
+            String valutazione = g.performanceValutazione();
+            txtArea.append(valutazione);
+            lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
+        }
+        else if(g.getValutazioni()==4){
+            String valutazione = g.compositionValutazione();
+            txtArea.append(valutazione);
+            lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
+        }
+        else{
+            String valutazione = g.interpretationOfMusicValutazione();
+            txtArea.append(valutazione);
+            lblPunti.setText("Punti: "+ g.getPersonaggio().punti);
+            btnValutazioni.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnValutazioniActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIstruzioni;
-    private javax.swing.JButton btnIstruzioni1;
-    private javax.swing.JButton btnIstruzioni2;
+    private javax.swing.JButton btnAbSpeciale;
+    private javax.swing.JButton btnAvanti;
     private javax.swing.JButton btnIstruzioni3;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton btnRischio;
+    private javax.swing.JButton btnScontroDiretto;
+    private javax.swing.JButton btnValutazioni;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel lblEvento;
+    private javax.swing.JLabel lblNickname;
+    private javax.swing.JLabel lblPersonaggio;
+    private javax.swing.JLabel lblPunti;
+    private javax.swing.JLabel lblTurno;
+    private javax.swing.JTextArea txtArea;
     // End of variables declaration//GEN-END:variables
 }

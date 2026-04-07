@@ -13,7 +13,7 @@ import java.util.Random;
 public abstract class Pattinatore {
    
     protected String nome, stato;
-    protected int  posizione, scontriVinti, scontriPersi,punti, puntiPenalita;
+    protected int posizione,punti;
     protected double puntiOlimpiade;
     protected Random rand;
     //valutazioni
@@ -24,10 +24,13 @@ public abstract class Pattinatore {
         this.posizione = p;
         this.puntiOlimpiade = pO;
         this.stato = s;
-        this.scontriVinti = 0;
-        this.scontriPersi = 0;
         this.punti = 0;
-        this.puntiPenalita = 0;
+        this.rand = new Random();
+        this.skatingSkills = 0;
+        this.composition = 0;
+        this.interpretationOfMusic=0;
+        this.performance = 0;
+        this.transitions = 0;
     }
     
     public void setSkatingSkills(int i){
@@ -62,17 +65,6 @@ public abstract class Pattinatore {
         return this.punti;
     }
     
-    public int getScontriVinti(){
-        return this.scontriVinti;
-    }
-    
-    public int getScontriPersi(){
-        return this.scontriPersi;
-    }
-    
-    public int getPuntiPenalita(){
-        return this.puntiPenalita;
-    }
     
     public abstract String abilitaSpeciale();
     

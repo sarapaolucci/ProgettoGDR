@@ -30,34 +30,34 @@ public class PattinatoreFigureSkating extends Pattinatore{
     public String abilitaSpeciale(){
         if(cantilever==true && quad == true){
             punti += 30;
-            return "";
+            return "Hai eseguito perfettamente un \ncantilever e un quad flip!!! \nPer questo hai ottenuto 30 punti\n";
         }
         else if(quad==true){
             punti+=15;
-            return "";
+            return "Hai eseguito un quad lutz, \nper questo hai ottenuto 15 punti\n";
         }
         else{
-            punti += 15;
-            return "";
+            transitions = 10;
+            return "Hai eseguito un cantilever che \nnon da punti in più, però porta al massimo \nla valutazione transitions\n";
         }
     }
     
     @Override
     public String rischio(){
        int r = rand.nextInt(101);
-       if(r > 70){
-           quad=false;
-           puntiPenalita+=10;
-           return "";
-       }
-       else if(r > 90){
+       if(r > 80){
            cantilever=false;
-           puntiPenalita+=15;
-           return "";
+           punti-=15;
+           return "Sei caduta mentre provavi a \nfare un cantilever, 15 punti in meno\n";
+       }
+       else if(r > 60){
+           quad=false;
+           punti-=10;
+           return "Hai sbagliato a fare un quad \nflip, 10 punti in meno\n";
        }
        else{
-           punti+=30;
-           return "";
+           punti-=7;
+           return "Sei scivolata perdendo così \n7 punti\n";
        }
     }
 }

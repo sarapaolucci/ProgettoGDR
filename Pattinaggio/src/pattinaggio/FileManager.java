@@ -6,12 +6,17 @@ package pattinaggio;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -34,6 +39,36 @@ public class FileManager {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
             writer.write(g.getNickname() + " " + g.getPersonaggio() + " " + g.getPersonaggio().punti);
             writer.newLine();
+        }
+    }
+    
+    public static Pattinatore ScegliAvversario(String filePath) throws FileNotFoundException, IOException{
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))){
+            ArrayList<Pattinatore> avversari = new ArrayList();
+            String line;
+            while ((line = reader.readLine()) != null){
+                String colonne[] = line.split(","); 
+                Pattinatore p = new PattinatoreSenzaAbilita(colonne[0], Double.parseDouble(colonne[1]),Integer.parseInt(colonne[2]),colonne[3]);
+                avversari.add(p);
+            }
+            Random rand = new Random();
+            int r = rand.nextInt(3);
+            return avversari.get(r);
+        }
+    }
+    
+    public static void serializzazione(Gestore g) throws FileNotFoundException, IOException{
+        String filePath = "pattinatore.ser";
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))){
+            oos.writeObject(g);
+        }
+    }
+    
+    public static Gestore deserializza() throws FileNotFoundException, IOException, ClassNotFoundException{
+        String filePath= "pattinatore.ser";
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))){
+            Gestore g = (Gestore) ois.readObject();
+            return g;
         }
     }
     

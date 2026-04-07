@@ -26,9 +26,9 @@ public class PattinatoreRecord extends Pattinatore{
     public String abilitaSpeciale(){
         if(raccomandata ==true){
             punti+=20;
-            return "";
+            return "Detieni il record olimpico! \nQuesto ti aggiunge 20 punti!\n";
         }
-        return "";
+        return "Hai rischiato troppo ed è andata male! \nDa te non ci si aspettano questi errori!\n";
     }
     
     @Override
@@ -36,12 +36,13 @@ public class PattinatoreRecord extends Pattinatore{
         int r = rand.nextInt(101);
         if(r > 80){
             raccomandata = false;
-            puntiPenalita+=15;
-            return "";
+            punti-=15;
+            return "Penalità di 15 punti! \nSei stata scordinata\n";
         }
         else{
-            punti+=10;
-            return "";
+            punti+=15;
+            performance = 10;
+            return "15 punti in più per la performance ottima. \nSe ne terrà conto nella valutazione\n";
         }
     }
 }

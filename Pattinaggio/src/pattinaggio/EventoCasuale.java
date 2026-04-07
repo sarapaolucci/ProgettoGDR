@@ -12,35 +12,27 @@ import java.util.Random;
  */
 public class EventoCasuale {
     
-    
-    
-    public static int Axel(){
+    public static String Figura(String nome, int doppio, int triplo, Pattinatore p){
         Random rand = new Random();
-        int axel[] = {3,8,13};
-        int r = rand.nextInt(3);
-        return axel[3];
+        int punti[] = {doppio,triplo};
+        int r = rand.nextInt(2);
+        int pnt = punti[r];
+        p.aumentaPunti(pnt);
+        if(r ==0){
+            return "Doppio " + nome + ": " + pnt + " punti\n";
+        }
+        else{
+            return  "Triplo " + nome + ": " + pnt + " punti\n";
+        }
     }
     
-    public static int Lutz(){
+    public static String Quadrupli(Pattinatore p){
         Random rand = new Random();
-        int lutz[] = {2,6,12};
-        int r = rand.nextInt(3);
-        return lutz[r];
-    }
-    
-    public static int Flip(){
-        Random rand = new Random();
-        int flip[]={2,5,11};
-        int r = rand.nextInt(3);
-        return flip[r];
-    }
-    
-    public static String Quadrupli(){
-        Random rand = new Random();
-        int punti[]= {13,12,1};
+        int punti[]= {13,12,11};
         String figura[]={"axel","lutz","flip"};
         int r = rand.nextInt(3);
-        return punti[r]+ ","+figura[r];
+        p.aumentaPunti(punti[r]);
+        return "Quad " + figura[r]+ ": " + punti[r] + " punti\n";
     }
 
 }
